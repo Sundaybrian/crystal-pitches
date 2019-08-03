@@ -6,6 +6,8 @@ class Config:
     '''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://sundaypriest:belter@localhost/crystal_pitches'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+
 
 
 

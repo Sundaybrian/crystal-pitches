@@ -20,7 +20,7 @@ def login():
     title='Crystal Pitches Login'
     return render_template('auth/login.html',login_form=login_form,title=title)
 
-@auth.route('/register',methods=['GET,POST'])
+@auth.route('/register',methods=['GET','POST'])
 def register():
     form=RegistrationForm()
     if form.validate_on_submit():
