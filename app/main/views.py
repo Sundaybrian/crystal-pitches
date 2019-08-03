@@ -1,8 +1,9 @@
-from flask import render_template
-from app import app
+from flask import render_template,request,redirect,url_for,abort
+from . import main
+
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -35,4 +36,4 @@ def index():
             'date_posted':'July 13,2019'
         }
     ]
-    return render_template('index.html',pitches=pitches)
+    return render_template('index.html',title='home',pitches=pitches)

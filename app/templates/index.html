@@ -1,4 +1,10 @@
 {% extends 'base.html'%}
 {%block content%}
-<h1>Welcome to crystal pitches</h1>
+<div class="container">
+    <h1>Welcome to crystal pitches</h1>
+    {%for pitch in pitches%}
+    <p>{{pitch.title}}</p>
+    <p>{{pitch.author}}</p>
+    {% endfor%}
+</div>
 {% endblock%}
