@@ -14,13 +14,11 @@ class Config:
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
-    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD"
-
-
-
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
 
 class ProdConfig(Config):
+    
     '''
     Production  configuration child class
 
@@ -39,6 +37,7 @@ class DevConfig(Config):
     '''
 
     DEBUG = True
+
 
 config_options = {
     'development': DevConfig,
