@@ -1,0 +1,22 @@
+{% extends 'base.html'%} {%block content%}
+<div class="container">
+  <article class="pitch content-section">
+      <img
+      src="{{url_for('static',filename='pitch.profile_pic_path')}}"
+      alt="{{pitch.user.username}} photo"
+      class="img-thumbnail"
+    />
+    <div class="pitch-body">
+      <div class="pitch-metadata">
+        <a class="mr-2" href="#">{{ pitch.user.username }}</a>
+        <small class="text-muted">{{ pitch.post_date.strftime('%Y-%m-%d') }}</small>
+      </div>
+      <h2 class="pitch-title">{{ pitch.post_title}}
+      </h2>
+      <p class="pitch-content lead">{{ pitch.post_content }}</p>
+    </div>
+  </article>
+</div>
+{% endblock%}
+
+
