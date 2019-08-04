@@ -58,10 +58,30 @@ class Posts(db.Model):
     post_date=db.Column(db.DateTime,default=datetime.utcnow())    
 
     #user id column to link a user to a specific post
-    user_id=db.Column(db.Interger,db.ForeignKey('users.id'))
+    user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
 
     #creating a relationship between post and comment
     comments=db.relationship('Comment',backref='post',lazy='dynamic')
+
+    def save_post(self):
+        '''
+        Function that saves a new picthed post to the posts table
+        '''
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_posts(cls):
+        '''
+        Function that fetches all the pitched posts from the posts table
+
+        Returns:
+            posts:all the pitches in the posts table
+        '''
+
+        #retrieve posts in descending order
+        posts=Posts.query.order_by(Posts.id.desc()).all()
+        return posts  
 
     
 
