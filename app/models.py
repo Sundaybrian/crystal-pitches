@@ -103,5 +103,25 @@ class Comment(db.Model):
     #user id for linking a comment to a specific user
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
 
+    def save_comment(self):
+        '''
+        Function that saves a new comment 
+        '''
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls,post_id):
+        '''
+        Function that a specific posts id
+
+        Args:
+            post_id:Specific pitch posted
+        Retuns:
+            comments:Related with that post id    
+        '''
+        comments=Comment.query.filter_by(post_id=post_id).all()
+
+
 
 
