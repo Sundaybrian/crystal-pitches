@@ -12,33 +12,7 @@ def index():
   '''
   View root page function that returns the index page and its data
   '''
-
-  pitches=[
-      {
-          'author':"Sunday Brian0",
-          'title':'MatchdayExperience',
-          'content':'Lorem Lorem',
-          'date_posted':'July 13,2019'
-      },
-        {
-          'author':"Sunday Brian1",
-          'title':'MatchdayExperience',
-          'content':'Lorem Lorem',
-          'date_posted':'July 13,2019'
-      },
-        {
-          'author':"Sunday Brian2",
-          'title':'MatchdayExperience',
-          'content':'Lorem Lorem',
-          'date_posted':'July 13,2019'
-      },
-        {
-          'author':"Sunday Brian3",
-          'title':'MatchdayExperience',
-          'content':'Lorem Lorem',
-          'date_posted':'July 13,2019'
-      }
-  ]
+  pitches=Posts.query.all()
   return render_template('index.html',title='home',pitches=pitches)
 
 
@@ -50,7 +24,7 @@ def new_post():
   if form.validate_on_submit():
     post_title=form.post_title.data
     post_content=form.post_content.data
-    new_post=Posts(post_title=post_title,post_content=post_content,author=current_user)
+    new_post=Posts(post_title=post_title,post_content=post_content,user=current_user)
     new_post.save_post()
 
     flash('Your pitch was created successfully')

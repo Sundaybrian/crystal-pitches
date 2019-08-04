@@ -1,10 +1,22 @@
-{% extends 'base.html'%}
-{%block content%}
+{% extends 'base.html'%} {%block content%}
 <div class="container">
-    <h1>Welcome to crystal pitches</h1>
-    {%for pitch in pitches%}
-    <p>{{pitch.title}}</p>
-    <p>{{pitch.author}}</p>
-    {% endfor%}
+  <h1 class="text-center">Welcome to crystal pitches</h1>
+  {%for pitch in pitches%}
+  <article class="pitch content-section">
+    <div class="pitch-body">
+      <div class="pitch-metadata">
+        <a class="mr-2" href="#">{{ pitch.user.username }}</a>
+        <small class="text-muted">{{ pitch.post_date.strftime('%Y-%m-%d') }}</small>
+      </div>
+      <h2>
+        <a class="pitch-title" href="#">{{ pitch.post_title}}</a>
+      </h2>
+      <p class="pitch-content lead">{{ pitch.post_content }}</p>
+    </div>
+  </article>
+
+  {% endfor%}
 </div>
 {% endblock%}
+
+
