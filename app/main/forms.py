@@ -9,7 +9,7 @@ class PostForm(FlaskForm):
     '''
     Class to create a form for creating a pitch post
     '''
-    post_title=StringField('Pitch Title',validators=[Required])
+    post_title=StringField('Pitch Title',validators=[Required()])
     post_content=TextAreaField('Pitch Content',validators=[Required()])
     submit=SubmitField('Submit Pitch')
 

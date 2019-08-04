@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect,url_for,abort
+from flask import render_template,request,redirect,url_for,abort,flash,request
 from . import main
 from flask_login import login_required
 from ..models import User
@@ -42,14 +42,15 @@ def index():
   return render_template('index.html',title='home',pitches=pitches)
 
 
-@main.route('/post/new') 
+@main.route('/pitch/new',methods=['GET','POST']) 
 @login_required
 def new_post():
   form=PostForm()
 
   if form.validate_on_submit():
     
-    return redirect(url_for('index'))
+    flash('Your pitch was created successfully')
+    return redirect(url_for('.index'))
 
   return render_template('create_post.html',title='New Post',create_form=form)  
 
