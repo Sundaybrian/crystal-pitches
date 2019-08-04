@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort,flash,request
 from . import main
 from flask_login import login_required,current_user
-from ..models import User,Posts
+from ..models import User,Posts,Comment
 from .forms import UpdateProfile,CommentForm,PostForm
 from ..import db,photos
 
@@ -40,14 +40,24 @@ def post(pitch_id):
   return render_template('pitch.html',title=post.post_title, pitch=post)
 
 
-@main.route('/pitch/comment/new/<int:id>',methods=['GET','POST'])
+@main.route('/pitch/comment/new/<int:pitch_id>',methods=['GET','POST'])
 @login_required
-def new_comment(id):
+def new_comment(pitch_id):
 
   '''
   View function that returns a form to create a comment for a post
   '''
+  post=Posts.query.filter_by(post_id=pitch_id)
   form=CommentForm()
+
+  if form.validate_on_submit():
+    comment_content=form.comment_content.data
+    new_comment=Comment(comment_content=comment_content,pitch=post,user=current_user)
+
+    return redirect(url_for('.post',pitch_id=post.id))
+
+
+  return render_template('new_comment.html',title='New Comment',comment_form=form)  
 
 
 
