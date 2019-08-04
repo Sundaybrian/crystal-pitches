@@ -37,6 +37,26 @@ class User(UserMixin,db.Model):
         return f'User {self.username}'
 
 
+class Posts(db.Model):
+    __tablename__='posts'
+
+    id=db.Column(db.Integer,primary_key=True)
+
+    #post_title for the post
+    post_title=db.Column(db.String())
+
+    #post_content
+    post_content=db.Column(db.String())
+
+    #post_date
+    post_date=db.Column(db.DateTime,default=datetime.utcnow())    
+
+    #user id column to link a user to a specific post
+    user_id=db.Column(db.Interger,db.ForeignKey('users.id'))
+
+    
+
+
 class Comment(db.Model):
     __tablename__='comments'
 
