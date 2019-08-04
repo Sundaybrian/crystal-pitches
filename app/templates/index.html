@@ -14,7 +14,7 @@
         <small class="text-muted">{{ pitch.post_date.strftime('%Y-%m-%d') }}</small>
       </div>
       <h2>
-        <a class="pitch-title" href="#">{{ pitch.post_title}}</a>
+        <a class="pitch-title" href="{{url_for()}}">{{ pitch.post_title}}</a>
       </h2>
       <p class="pitch-content lead">{{ pitch.post_content }}</p>
     </div>

@@ -33,6 +33,12 @@ def new_post():
   return render_template('create_post.html',title='New Pitch',create_form=form)  
 
 
+@main.route('/pitch/<int:pitch_id>')
+def post(pitch_id):
+  post=Posts.query.get(pitch_id)
+
+  return render_template('pitch.html',title=post.post_title, pitch=post)
+
 
 @main.route('/pitch/comment/new/<int:id>',methods=['GET','POST'])
 @login_required
