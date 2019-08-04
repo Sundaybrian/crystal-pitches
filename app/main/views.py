@@ -36,6 +36,7 @@ def new_post():
 @main.route('/pitch/<int:pitch_id>')
 def post(pitch_id):
   post=Posts.query.get(pitch_id)
+  comments=Comment.get_comments(pitch_id)
 
   return render_template('pitch.html',title=post.post_title, pitch=post)
 

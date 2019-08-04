@@ -121,6 +121,7 @@ class Comment(db.Model):
             comments:Related with that post id    
         '''
         comments=Comment.query.filter_by(post_id=post_id).all()
+        return comments
 
 
 
