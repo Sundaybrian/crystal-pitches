@@ -3,6 +3,11 @@
   <h1 class="text-center">Welcome to crystal pitches</h1>
   {%for pitch in pitches%}
   <article class="pitch content-section">
+      <img
+      src="{{url_for('static',filename='pitch.profile_pic_path')}}"
+      alt="{{pitch.user.username}} photo"
+      class="img-thumbnail"
+    />
     <div class="pitch-body">
       <div class="pitch-metadata">
         <a class="mr-2" href="#">{{ pitch.user.username }}</a>

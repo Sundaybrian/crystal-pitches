@@ -63,6 +63,9 @@ class Posts(db.Model):
     #creating a relationship between post and comment
     comments=db.relationship('Comment',backref='post',lazy='dynamic')
 
+    #creating a relationship to link a post to a user img
+    # profile_pic_path=db.relationship('User',backref='user', lazy='dynamic')
+
     def save_post(self):
         '''
         Function that saves a new picthed post to the posts table
