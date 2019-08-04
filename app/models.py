@@ -20,6 +20,12 @@ class User(UserMixin,db.Model):
     profile_pic_path=db.Column(db.String())
     password_hash=db.Column(db.String())
 
+    #creating a relationship between user and posts class
+    posts=db.relationship('Posts',backref='user',lazy='dynamic')
+
+    #creating a relationship between user and comments
+    comments=db.relationship('Comments',backref='user',lazy='dynamic')
+
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
