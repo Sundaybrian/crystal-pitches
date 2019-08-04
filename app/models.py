@@ -60,6 +60,9 @@ class Posts(db.Model):
     #user id column to link a user to a specific post
     user_id=db.Column(db.Interger,db.ForeignKey('users.id'))
 
+    #creating a relationship between post and comment
+    comments=db.relationship('Comment',backref='post',lazy='dynamic')
+
     
 
 
