@@ -9,7 +9,6 @@ from ..import db,photos
 @main.route('/')
 def index():
 
-
   '''
   View root page function that returns the index page and its data
   '''
@@ -50,7 +49,7 @@ def new_comment(id):
   View function that returns a form to create a comment for a post
   '''
   form=CommentForm()
-  
+
 
 
 @main.route('/user/<uname>')
