@@ -2,6 +2,7 @@ from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
+from datetime import datetime
 
 
 @login_manager.user_loader
@@ -34,4 +35,21 @@ class User(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
+
+
+class Comment(db.Model):
+    __tablename__='comments'
+
+    id=db.Column(db.Integer,primary_key=True)
+
+     #comment a user gives to a post
+    comment_content=db.Column(db.String())
+
+    #post id for linking a comment to a specific post
+    post_id=db.Column(db.Integer,db.ForeignKey('posts.id'))
+
+    #user id for linking a comment to a specific user
+    user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
+
+
 
