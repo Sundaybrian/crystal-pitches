@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for,abort
 from . import main
 from flask_login import login_required
 from ..models import User
-from .forms import UpdateProfile,CommentForm
+from .forms import UpdateProfile,CommentForm,PostForm
 from ..import db,photos
 
 # Views
@@ -40,6 +40,20 @@ def index():
       }
   ]
   return render_template('index.html',title='home',pitches=pitches)
+
+
+@main.route('/post/new') 
+@login_required
+def new_post():
+  form=PostForm()
+
+  if form.validate_on_submit():
+    flash('Your post has been created!','success')
+    return redirect(url_for('index'))
+
+  return render_template('create-post.html',title='New Post',form=form)  
+
+
 
 @main.route('/pitch/comment/new/<int:id>',methods=['GET','POST'])
 @login_required

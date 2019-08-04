@@ -24,7 +24,7 @@ class User(UserMixin,db.Model):
     posts=db.relationship('Posts',backref='user',lazy='dynamic')
 
     #creating a relationship between user and comments
-    comments=db.relationship('Comments',backref='user',lazy='dynamic')
+    comments=db.relationship('Comment',backref='user',lazy='dynamic')
 
     @property
     def password(self):
@@ -71,7 +71,7 @@ class Posts(db.Model):
         db.session.commit()
 
     @classmethod
-    def get_posts(cls):
+    def get_posts(cls):   
         '''
         Function that fetches all the pitched posts from the posts table
 
