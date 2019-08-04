@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort,flash,request
 from . import main
-from flask_login import login_required
-from ..models import User
+from flask_login import login_required,current_user
+from ..models import User,Posts
 from .forms import UpdateProfile,CommentForm,PostForm
 from ..import db,photos
 
@@ -48,11 +48,15 @@ def new_post():
   form=PostForm()
 
   if form.validate_on_submit():
-    
+    post_title=form.post_title.data
+    post_content=form.post_content.data
+    new_post=Posts(post_title=post_title,post_content=post_content,author=current_user)
+    new_post.save_post()
+
     flash('Your pitch was created successfully')
     return redirect(url_for('.index'))
 
-  return render_template('create_post.html',title='New Post',create_form=form)  
+  return render_template('create_post.html',title='New Pitch',create_form=form)  
 
 
 
