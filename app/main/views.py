@@ -13,7 +13,7 @@ def index():
   View root page function that returns the index page and its data
   '''
   pitches=Posts.query.all()
-  return render_template('index.html',title='home',pitches=pitches)
+  return render_template('index.html',title='home',pitches=pitches,user=current_user)
 
 
 @main.route('/pitch/new',methods=['GET','POST']) 
