@@ -40,7 +40,7 @@ def post(pitch_id):
 
 
 
-  return render_template('pitch.html',title=post.post_title, pitch=post)
+  return render_template('pitch.html',title=post.post_title, pitch=post,commets=comments)
 
 
 @main.route('/pitch/comment/new/<int:pitch_id>',methods=['GET','POST'])
@@ -56,6 +56,7 @@ def new_comment(pitch_id):
   if form.validate_on_submit():
     comment_content=form.comment_content.data
     new_comment=Comment(comment_content=comment_content,user=current_user)
+    new_comment.save_comment()
 
     return redirect(url_for('.post',pitch_id=pitch_id))
 
