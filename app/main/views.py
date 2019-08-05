@@ -38,6 +38,8 @@ def post(pitch_id):
   post=Posts.query.get(pitch_id)
   comments=Comment.get_comments(pitch_id)
 
+
+
   return render_template('pitch.html',title=post.post_title, pitch=post)
 
 
@@ -48,14 +50,14 @@ def new_comment(pitch_id):
   '''
   View function that returns a form to create a comment for a post
   '''
-  post=Posts.query.filter_by(post_id=pitch_id)
+  post=Posts.query.filter_by(id=pitch_id)
   form=CommentForm()
 
   if form.validate_on_submit():
     comment_content=form.comment_content.data
-    new_comment=Comment(comment_content=comment_content,pitch=post,user=current_user)
+    new_comment=Comment(comment_content=comment_content,user=current_user)
 
-    return redirect(url_for('.post',pitch_id=post.id))
+    return redirect(url_for('.post',pitch_id=pitch_id))
 
 
   return render_template('new_comment.html',title='New Comment',comment_form=form)  

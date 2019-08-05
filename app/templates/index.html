@@ -17,6 +17,7 @@
         <a class="pitch-title" href="{{url_for('main.post',pitch_id=pitch.id)}}">{{ pitch.post_title}}</a>
       </h2>
       <p class="pitch-content lead">{{ pitch.post_content }}</p>
+      <a class="btn btn-success btn-lg text-center" href="/pitch/comment/new/{{pitch.id}}"> Write a comment</a>
     </div>
   </article>
 
