@@ -1,6 +1,6 @@
 <!-- Displaying Comments macro -->
 {% macro displayComments(comments_list) %}
-    {% for comment in comment_list %}
+    {% for comment in comments_list %}
     <div class="col-12 comment-card">
         <h2> {{comment.user_id}} </h2>
         <p> {{comment.comment_content}}</p>

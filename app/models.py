@@ -21,10 +21,10 @@ class User(UserMixin,db.Model):
     password_hash=db.Column(db.String())
 
     #creating a relationship between user and posts class
-    posts=db.relationship('Posts',backref='user',lazy='dynamic')
+    posts=db.relationship('Posts',backref='user',lazy="dynamic")
 
     #creating a relationship between user and comments
-    comments=db.relationship('Comment',backref='user',lazy='dynamic')
+    comments_user=db.relationship('Comment',backref='user',lazy="dynamic")
 
     @property
     def password(self):
@@ -61,7 +61,7 @@ class Posts(db.Model):
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
 
     #creating a relationship between post and comment
-    comments=db.relationship('Comment',backref='post',lazy='dynamic')
+    comments_post=db.relationship('Comment',backref='post',lazy="dynamic")
 
     #creating a relationship to link a post to a user img
     # profile_pic_path=db.relationship('User',backref='user', lazy='dynamic')
