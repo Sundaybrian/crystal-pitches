@@ -1,31 +1,57 @@
-*{
-    box-sizing: border-box;
-    font-size: 16px
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+:root {
+  --marina: #135589;
+  --glass: #edfafd;
+  --chill: #aed9ea;
+  --california-chill: #3ddad7;
+}
+
+body {
+  background: var(--glass);
+}
+
+.navbar.navbar-inverse {
+  border-radius: 0;
+  background: var(--marina);
+  border-color: none;
+}
+
+.nav.navbar-nav li a {
+  color: #ffff;
+  font-weight: 300;
+  text-transform: capitalize;
 }
 /* =================helper classes================== */
 
-.mr-2{
-    margin-right:8px;
+.mr-2 {
+  margin-right: 8px;
 }
 
 /* =================end helper===================== */
 
 /* ******=============index page=============*********** */
 .content-section {
-  background: #ffffff;
   padding: 10px 20px;
-  border: 1px solid #444;
+  border: 1px solid var(--california-chill);
+  box-shadow: 2px 2px 2px var(--california-chill);
   border-radius: 3px;
   margin-bottom: 20px;
 }
 
 a.pitch-title {
-  text-transform: capitalize;
+  text-transform: uppercase;
+  color: var(--marina);
+  font-size: 1.6rem;
+  font-weight: bold;
 }
-
 
 .pitch-content {
   white-space: pre-line;
+  font-size: 1.8rem;
 }
 
 .pitch-img {
@@ -37,11 +63,12 @@ a.pitch-title {
 .pitch-metadata {
   padding-bottom: 1px;
   margin-bottom: 4px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--marina);
 }
 
 .pitch-metadata a:hover {
-  color: #444;
+  color: var(--california-chill);
+  transform: translateX(5px);
   text-decoration: none;
 }
 
@@ -51,3 +78,17 @@ a.pitch-title {
   vertical-align: middle;
 }
 
+/* ******=============single pitch page=============*********** */
+
+.comment-section {
+  padding: 5px 20px;
+  border: 1px solid var(--california-chill);
+  
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.comment-content {
+  white-space: pre-line;
+  font-size: 1.4rem;
+}

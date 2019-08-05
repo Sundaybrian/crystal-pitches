@@ -1,36 +1,43 @@
 {% extends 'base.html'%} {% import 'macros.html' as macro%} {%block content%}
 <div class="container">
-  <article class="pitch content-section">
-    <img
-      src="{{url_for('static',filename='pitch.profile_pic_path')}}"
-      alt="{{ pitch.user.username }} photo"
-      class="img-thumbnail"
-    />
-    <div class="pitch-body">
-      <div class="pitch-metadata">
-        <a class="mr-2" href="#">{{ pitch.user.username }}</a>
-        <small class="text-muted">{{
-          pitch.post_date.strftime("%Y-%m-%d")
-        }}</small>
+  <div class="row">
+    <article class="pitch content-section">
+      <img
+        src="{{url_for('static',filename='pitch.profile_pic_path')}}"
+        alt="{{ pitch.user.username }} photo"
+        class="img-thumbnail"
+      />
+      <div class="pitch-body">
+        <div class="pitch-metadata">
+          <a class="mr-2" href="#">{{ pitch.user.username }}</a>
+          <small class="text-muted">{{
+            pitch.post_date.strftime("%Y-%m-%d")
+          }}</small>
+        </div>
+        <h2 class="pitch-title">{{ pitch.post_title }}</h2>
+        <p class="pitch-content lead">{{ pitch.post_content }}</p>
       </div>
-      <h2 class="pitch-title">{{ pitch.post_title }}</h2>
-      <p class="pitch-content lead">{{ pitch.post_content }}</p>
+    </article>
+    <hr />
+    <div class="comment-title">
+      
+      <a
+        class="btn btn-primary btn-sm text-center"
+        href="/pitch/comment/new/{{ pitch.id }}"
+      >
+        Add Comment</a
+      >
     </div>
-  </article>
+
+    <hr />
+
+    {{ macro.displayComments(comments) }}
+  </div>
 
   <!-- comments -->
   <div class="row">
-    <h4>Comments</h4>
     <hr />
-
-    {% if comments %}
-    {{ macro.displayComments(comments) }}
-
-    {% else%}
-    <h3 class="text-center">This Pitch has no comments</h3>
-
-    <a class="btn btn-success btn-lg text-center" href="/pitch/comment/new/{{pitch.id}}"> Write a comment</a>
-    {% endif %}
+    <div class="col-md-8"></div>
   </div>
   <!-- end comments -->
 </div>

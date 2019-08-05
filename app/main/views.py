@@ -4,6 +4,7 @@ from flask_login import login_required,current_user
 from ..models import User,Posts,Comment
 from .forms import UpdateProfile,CommentForm,PostForm
 from ..import db,photos
+import markdown2
 
 # Views
 @main.route('/')
@@ -35,8 +36,12 @@ def new_post():
 
 @main.route('/pitch/<int:pitch_id>')
 def post(pitch_id):
+  '''
+  View function that returns a pitch with its comments
+  '''
   post=Posts.query.get(pitch_id)
   comments=Comment.get_comments(pitch_id)
+ 
 
   return render_template('pitch.html',title=post.post_title, pitch=post,comments=comments)
 

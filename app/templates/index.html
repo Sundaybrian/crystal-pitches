@@ -1,27 +1,28 @@
 {% extends 'base.html'%} {%block content%}
 <div class="container">
-  <h1 class="text-center">Welcome to crystal pitches</h1>
+  <div class="col-md-2"></div>
   {%for pitch in pitches%}
   <article class="pitch content-section">
       <img
-      src="{{url_for('static',filename='user.profile_pic_path')}}"
+      src="{{url_for('static',filename='{{pitch.user.profile_pic_path}}')}}"
       alt="{{pitch.user.username}} photo"
       class="img-thumbnail"
     />
     <div class="pitch-body">
       <div class="pitch-metadata">
-        <a class="mr-2" href="#">{{ pitch.user.username }}</a>
+        <a class="mr-2">{{ pitch.user.username }}</a>
         <small class="text-muted">{{ pitch.post_date.strftime('%Y-%m-%d') }}</small>
       </div>
       <h2>
         <a class="pitch-title" href="{{url_for('main.post',pitch_id=pitch.id)}}">{{ pitch.post_title}}</a>
       </h2>
       <p class="pitch-content lead">{{ pitch.post_content }}</p>
-      <a class="btn btn-success btn-lg text-center" href="/pitch/comment/new/{{pitch.id}}"> Write a comment</a>
+      <a class="btn btn-primary btn-sm text-center" href="/pitch/comment/new/{{pitch.id}}"> comment</a>
     </div>
   </article>
 
   {% endfor%}
+  <div class="col-md-2"></div>
 </div>
 {% endblock%}
 
