@@ -36,8 +36,8 @@ As a user I would like:
 * `$ python3.6 -m venv virtual` to create a  virtual environment
 * `$ source virtual/bin/activate` to activate the virtual environment
 * run `$ python3.6 -m pip install -r requirements.txt ` to install dependencies
-* In the manage.py change app = create_app('production') to app = create_app('development')
-* run `$ chmod +x start.sh` (make the program executable)
+* In the manage.py change `app = create_app('production')` to `app = create_app('development')`
+* run `$ chmod a+x start.sh` to make the start.sh file executable
 * `$ ./start.sh` to start the application
 
 ## Known Bugs
